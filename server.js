@@ -12,7 +12,7 @@ const port = process.env.PORT || 5001
 
 app.use(cors())
 app.use(express.json());
-app.use("/api/product", require("./router/productRouter"))
+app.use("/api/product", require("./router/itemRouter"))
 app.use("/api/cart", require("./router/cartRouter"))
 app.use("/api/user", require('./router/userRouter'))
 app.use("/api/admin", require('./router/adminRouter'))
