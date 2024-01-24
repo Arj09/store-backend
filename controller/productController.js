@@ -5,16 +5,17 @@ const Admin = require("../model/adminModel")
 
 const createProduct = asyncHandler( async (req, res)=>{
 
-    const { name, price, quantity} = req.body
+    const { name, price, quantity, image} = req.body
     console.log(req.body)
 
-    if(!name || !price || !quantity ){
+    if(!name || !price || !quantity || !image ){
         res.status(400)
         throw new Error("all filed all mandatory")
     }
 
     const product = await Product.create({
         name,
+        image,
         price,
         quantity
 
