@@ -2,12 +2,6 @@ const asyncHandler = require("express-async-handler");
 
 const Image = require("../model/image");
 
-
-
-
-
-
-
 const UploadImage = asyncHandler(  async (req, res)=>{
 
 
@@ -16,11 +10,6 @@ const UploadImage = asyncHandler(  async (req, res)=>{
 
     })
 
-
-
-
-
-    
     res.json({
         sucess:1,
         Image_url :`http://localhost:5000/images/${req.file.filename}`,
