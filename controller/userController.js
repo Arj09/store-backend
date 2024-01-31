@@ -83,4 +83,11 @@ const currentUser = asyncHandler(async(req, res)=>{
 
 } );
 
-module.exports = {registerUser, loginUser,currentUser}
+const Alluser = asyncHandler (async (req, res)=>{
+    const id = req.body
+    const user = await User.findOne({_id: id});
+    res.json(user)
+
+})
+
+module.exports = {registerUser, loginUser,currentUser,Alluser}
