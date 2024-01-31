@@ -43,7 +43,7 @@ const createCart = asyncHandler( async (req, res)=>{
 
 
 const getCart = asyncHandler( async (req, res)=>{
-    const cart = await Cart.find()
+    const cart = await Cart.findOne({ user_id: req.user.id})
     res.send(cart)
     
 })
