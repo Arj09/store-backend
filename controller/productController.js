@@ -5,7 +5,7 @@ const Admin = require("../model/adminModel")
 
 const createProduct = asyncHandler( async (req, res)=>{
 
-    const { name, price, quantity, image} = req.body
+    const { name, price, category, quantity} = req.body
     console.log(req.body)
 
     if(!name || !price || !quantity || !image ){
@@ -15,9 +15,10 @@ const createProduct = asyncHandler( async (req, res)=>{
 
     const product = await Product.create({
         name,
-        image,
         price,
-        quantity
+        quantity,
+        category,
+        image : req.file.filename
 
     })
     res.status(202).json(product)

@@ -25,7 +25,7 @@ const upload = multer({storage : storage})
 app.use(cors())
 app.use(express.json());
 app.use("/images", express.static('upload/images'))
-app.use("/api/product", require("./router/itemRouter"))
+app.use("/api/product", upload.single('product'),  require("./router/itemRouter"))
 
 app.use("/api/cart", require("./router/cartRouter"))
 app.use("/api/order", require("./router/orderRouter"))

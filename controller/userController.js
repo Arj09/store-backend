@@ -26,7 +26,7 @@ const loginUser = asyncHandler( async (req, res)=>{
                 },
             },
             process.env.ACCESS_TOKEN,
-            { expiresIn: "1m"}
+            { expiresIn: "60m"}
         );
         
         res.json({accessToken})
