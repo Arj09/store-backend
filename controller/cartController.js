@@ -67,16 +67,9 @@ const updateCart = asyncHandler( async (req, res)=>{
    
 
     if(cart){
-
-        console.log(cart,"mera cart")
-
-
+        
         const itemIndex = cart.ItemStore.findIndex(p=>p.product_id == product_id)
 
-        console.log(itemIndex)
-
-        console.log(cart.ItemStore[itemIndex])
-        
         if(cart.ItemStore[itemIndex]. quantity > 1){
             
             let productItem = cart.ItemStore[itemIndex];
@@ -84,6 +77,8 @@ const updateCart = asyncHandler( async (req, res)=>{
                 cart.bill -= quantity*productItem.price
                 await cart.save();
                 
+        }else{
+            
         }
        
     }

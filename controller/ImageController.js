@@ -3,12 +3,19 @@ const asyncHandler = require("express-async-handler");
 const Image = require("../model/image");
 
 const UploadImage = asyncHandler(  async (req, res)=>{
+    console.log(req.file)
+    console.log(req.body)
 
 
     const image = await Image.create({
-        image : req.file.filename
-
+        image : req.file.filename,
+        name : req.body.name,
+        price : req.body.price,
+        category : req.body.category,
+        quantity : req.body.quantity
     })
+
+    console.log(image)
 
     res.json({
         sucess:1,
