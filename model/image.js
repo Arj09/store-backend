@@ -12,7 +12,12 @@ const ImageSChema = mongoose.Schema({
         required : true
     },
     price :{
-        type: String,
+        type: Number,
+        required : true
+    },
+
+    mrp :{
+        type: Number,
         required : true
     },
     category : {

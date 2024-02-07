@@ -3,25 +3,39 @@ const asyncHandler = require("express-async-handler");
 const Image = require("../model/image");
 
 const UploadImage = asyncHandler(  async (req, res)=>{
-    console.log(req.file)
-    console.log(req.body)
+    const { name, category, price, mrp, quantity } = req.body
+   
+    
+
+    if(!name || !price || !quantity   || !category || !mrp ){
+        res.status(400)
+        throw new Error("all filed all mandatory")
+    }
+
+    console.log(req.body , "added")
+    console.log(req.file.filename)
 
 
-    const image = await Image.create({
+    const image1 = await Image.create({
         image : req.file.filename,
-        name : req.body.name,
-        price : req.body.price,
-        category : req.body.category,
-        quantity : req.body.quantity
+        name,
+        price,
+        category,
+        quantity,
+        mrp
     })
 
-    console.log(image)
+    console.log("Added in DB")
+    /*
 
     res.json({
         sucess:1,
         Image_url :`http://localhost:5000/images/${req.file.filename}`,
         image : image
     })
+    */
+
+    res.status(202).json(image1)
 
 })
 

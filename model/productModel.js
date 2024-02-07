@@ -7,6 +7,7 @@ const productSchema = mongoose.Schema({
         required: [true, "Please add Product name"],
         type : String
     },
+    
     image : {
         type: String,
         required:[true, "please add image"]
@@ -23,10 +24,14 @@ const productSchema = mongoose.Schema({
     },
 
     quantity:{
-        required: [true, "Please add Product name"],
+        required: [true, "Please add Product quantity"],
         type : Number
     },
-
+    mrp:{
+        required: [true, "Please add Product MRP"],
+        type : Number
+    },
+    
 
 
 },{
