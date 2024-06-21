@@ -5,7 +5,7 @@ const { getProducts, createProduct, deleteProduct, updateProduct, getProduct } =
 const router = express.Router()
 
 
-router.use(validateToken)
+//router.use(validateToken)
 router.route("/").get(getProducts).post(createProduct)
 router.route("/:id").delete(deleteProduct).put(updateProduct).get(getProduct)
 

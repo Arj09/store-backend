@@ -7,8 +7,10 @@ const Order = require("../model/orderModel")
 
 const createOrder = asyncHandler( async (req, res)=>{
 
-    const cart_id = req.params.id
+    const { cart_id } = req.body // Cart ID
+    console.log(req.body)
     const cart = await Cart.findById({_id: cart_id})
+    
 
     if(!cart){
         res.status(404);
@@ -33,7 +35,7 @@ const createOrder = asyncHandler( async (req, res)=>{
 const OrderHistory = asyncHandler( async (req, res)=>{
 
     const order = await Order.find({user_id : req.user.id})
-    console.log(order)
+    
 
     res.status(200).json(order)
 })

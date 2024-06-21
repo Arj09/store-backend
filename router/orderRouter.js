@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 router.use(validateToken)
-router.route("/:id").post(createOrder)
+router.route("/").post(createOrder)
 router.route("/").get(OrderHistory)
 
 

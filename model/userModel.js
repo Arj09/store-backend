@@ -15,6 +15,24 @@ const userSChema = mongoose.Schema({
         type: String,
         required: [true, "Please enter name "],
     },
+    mobile_no : {
+        type : Number,
+    },
+    state:{
+        type : String,
+    },
+    distrit:{
+        type : String,
+    },
+    pin_no:{
+        type : Number,
+    },
+    address:{
+        type : String,
+    },
+    address1:{
+        type : String,
+    }
 },{
     timestamps : true
 })

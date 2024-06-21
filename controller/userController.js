@@ -1,8 +1,12 @@
 const User = require("../model/userModel")
 const asyncHandler = require("express-async-handler");
 const bcrypt = require('bcrypt');
-
 const jwt = require("jsonwebtoken")
+
+
+
+
+
 
 const loginUser = asyncHandler( async (req, res)=>{
     const { email, password } = req.body;
@@ -61,6 +65,9 @@ const registerUser = asyncHandler( async (req, res)=>{
         username,
         email,
         password:hashedPassword,
+        mobile_no :" ",
+        pin_no:" ",
+
     })
 
     console.log(`user created ${user}`)
@@ -84,10 +91,38 @@ const currentUser = asyncHandler(async(req, res)=>{
 } );
 
 const Alluser = asyncHandler (async (req, res)=>{
-    const id = req.body
-    const user = await User.findOne({_id: id});
+    
+    
+  
+    
+
+    const user = await User.find().populate("username")
+    
     res.json(user)
 
 })
 
-module.exports = {registerUser, loginUser,currentUser,Alluser}
+
+const EditUserDetails = asyncHandler (async(req, res)=>{
+    
+    const user = await User.findOne({_id: req.params.id});
+    
+    if(!user){
+        res.status(403);
+        throw new Error("User don't have permission to edit any detail");
+
+    }
+
+    const EditUserDetail = await User.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true
+        }
+    )
+
+    res.status(200).json(EditUserDetail);
+
+})
+
+module.exports = {registerUser, loginUser,currentUser,Alluser, EditUserDetails}
