@@ -102,7 +102,7 @@ const Alluser = asyncHandler (async (req, res)=>{
 
 })
 
-
+// edit details
 const EditUserDetails = asyncHandler (async(req, res)=>{
     
     const user = await User.findOne({_id: req.params.id});
