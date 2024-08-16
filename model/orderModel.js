@@ -1,3 +1,4 @@
+const { type } = require('express/lib/response')
 const mongoose = require('mongoose')
 
 const orderSChema = mongoose.Schema({
@@ -14,7 +15,12 @@ const orderSChema = mongoose.Schema({
             product_id : { type: mongoose.Schema.Types.ObjectId, required: true,  },
             name: {type: String},
             quantity: { type: Number, default : 1},
-            price: { type: Number}
+            price: { type: Number},
+            image : {
+                type: String,
+                required:[true, "please add image"]
+        
+            } 
 
         }
     ],
@@ -26,10 +32,14 @@ const orderSChema = mongoose.Schema({
     order_date: {
         type: Date,
         default: Date.now
+    },
+    order_status :{
+        type: String,
+        default :'pending'
     }
  
 },{
     timestamps : true
 })
 
-module.exports = mongoose.model("Order", orderSChema)
+module.exports = mongoose.model("Order1", orderSChema)

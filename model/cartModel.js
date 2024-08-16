@@ -29,4 +29,4 @@ const cartSChema = mongoose.Schema({
     timestamps : true
 })
 
-module.exports = mongoose.model("Cart", cartSChema)
+module.exports = mongoose.model("Cart1", cartSChema)

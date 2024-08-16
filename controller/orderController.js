@@ -42,8 +42,32 @@ const OrderHistory = asyncHandler( async (req, res)=>{
 
 
 
+const GetOrderAll = asyncHandler( async (req, res)=>{
+
+   const order = await Order.find()
+   res.status(200).json(order)
+})
+
+const updateOrderDetail = asyncHandler( async (req, res)=>{
+
+    const order = await Order.findOne({_id : req.params.id});
+
+
+
+    const update = await Order.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true
+        }
+    )
+    
+    res.status(200).json(update)
+})
 
 
 
 
-module.exports = {createOrder, OrderHistory }
+
+
+module.exports = {createOrder, OrderHistory, GetOrderAll, updateOrderDetail }

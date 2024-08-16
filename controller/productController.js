@@ -8,14 +8,16 @@ const createProduct = asyncHandler( async (req, res)=>{
 
     const { name, price, category, quantity, mrp} = req.body
     console.log(req.body)
-    console.log(req.file.filename)
+    //console.log(req.file.filename)
     
 
     if(!name || !price || !quantity || !mrp || !category ){
         res.status(400)
         throw new Error("all filed all mandatory")
     }
+    
 
+   console.log("process")
     const product = await Product.create({
         image : req.file.filename ,
         name ,
@@ -27,6 +29,8 @@ const createProduct = asyncHandler( async (req, res)=>{
         
 
     })
+    console.log("add")
+
     res.status(202).json(product)
 })
 
@@ -55,14 +59,16 @@ const getProduct = asyncHandler( async (req, res)=>{
 const updateProduct = asyncHandler(async (req, res)=>{
 
 
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id); /*
     const admin = await Admin.findById(req.user.id);
     
     
     if(!admin){
         res.status(403);
         throw new Error("User don't have permission to update this  product");
-    }
+    }*/
+
+    console.log(req.body.price)  
     
     if(!product){
         res.status(404);
@@ -86,7 +92,7 @@ const updateProduct = asyncHandler(async (req, res)=>{
 })
 const deleteProduct = asyncHandler ( async  (req, res)=>{
 
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id); 
     const admin = await Admin.findById(req.user.id);
     
     

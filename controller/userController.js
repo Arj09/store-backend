@@ -92,10 +92,6 @@ const currentUser = asyncHandler(async(req, res)=>{
 
 const Alluser = asyncHandler (async (req, res)=>{
     
-    
-  
-    
-
     const user = await User.find().populate("username")
     
     res.json(user)
@@ -105,7 +101,12 @@ const Alluser = asyncHandler (async (req, res)=>{
 // edit details
 const EditUserDetails = asyncHandler (async(req, res)=>{
     
-    const user = await User.findOne({_id: req.params.id});
+    const user = await User.findOne({_id: req.user.id});
+
+    console.log("something print", req.body)
+
+  
+    
     
     if(!user){
         res.status(403);
@@ -114,15 +115,29 @@ const EditUserDetails = asyncHandler (async(req, res)=>{
     }
 
     const EditUserDetail = await User.findByIdAndUpdate(
-        req.params.id,
+        req.user.id,
         req.body,
         {
             new: true
         }
     )
 
-    res.status(200).json(EditUserDetail);
+   
+
+    res.status(200).json(EditUserDetail); 
+    
 
 })
 
-module.exports = {registerUser, loginUser,currentUser,Alluser, EditUserDetails}
+
+
+const profile = asyncHandler (async (req, res)=>{
+    
+    const user = await User.find({_id : req.user.id})
+    
+    res.json(user[0])
+
+})
+
+
+module.exports = {registerUser, loginUser,currentUser,Alluser, EditUserDetails, profile}
