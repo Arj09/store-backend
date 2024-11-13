@@ -93,14 +93,14 @@ const updateProduct = asyncHandler(async (req, res)=>{
 const deleteProduct = asyncHandler ( async  (req, res)=>{
 
     const product = await Product.findById(req.params.id); 
-    const admin = await Admin.findById(req.user.id);
+    //const admin = await Admin.findById(req.user.id);
     
-    
+    /*
     if(!admin){
         res.status(403);
         throw new Error("User don't have permission to delete this  product");
     }
-    
+    */
     if(!product){
         res.status(404);
         throw new Error('product not found');
