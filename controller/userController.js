@@ -132,8 +132,10 @@ const EditUserDetails = asyncHandler (async(req, res)=>{
 
 
 const profile = asyncHandler (async (req, res)=>{
-    
+
     const user = await User.find({_id : req.user.id})
+
+    console.log(req.user)
     
     res.json(user[0])
 

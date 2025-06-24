@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Product = require("../model/productModel")
 const Admin = require("../model/adminModel")
+const User = require("../model/userModel")
 
 
 const createProduct = asyncHandler( async (req, res)=>{
@@ -36,6 +37,10 @@ const createProduct = asyncHandler( async (req, res)=>{
 
 
 const getProducts = asyncHandler( async  (req, res)=>{
+
+
+   
+    
     const product = await Product.find()
     const product1 = product.reverse()
     
@@ -57,19 +62,25 @@ const getProduct = asyncHandler( async (req, res)=>{
     res.status(200).json(product);
 })
 const updateProduct = asyncHandler(async (req, res)=>{
+    
+    const product = await Product.findById(req.params.id);
+    
+    console.log(req.admin.id)
 
 
-    const product = await Product.findById(req.params.id); /*
+    
+/*
     const admin = await Admin.findById(req.user.id);
+    console.log(admin)
     
     
     if(!admin){
         res.status(403);
         throw new Error("User don't have permission to update this  product");
-    }*/
+    }
 
-    console.log(req.body.price)  
-    
+    console.log(req.body.price)  */
+   
     if(!product){
         res.status(404);
         throw new Error('product not found');
