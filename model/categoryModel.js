@@ -1,3 +1,4 @@
+const { type } = require('express/lib/response')
 const mongoose = require('mongoose')
 
 const categorySChema = mongoose.Schema({
@@ -6,12 +7,13 @@ const categorySChema = mongoose.Schema({
         type : String,
         required : [true, "Please add category"]
     },
-
     category_item : [
         {
-            item_name : {required: [true, "Please add Product name"], type : String}
+            item_name : { type :String, required : [true, "please add"]}
         }
     ]
+
+   
 
 
 

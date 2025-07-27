@@ -8,10 +8,10 @@ const Category = require("../model/categoryModel");
 
 const createCategory = asyncHandler( async (req, res)=>{
     
-    const { category_name, item_name } = req.body
-    console.log(req.body)
+    const { category_name, category_item } = req.body
+    
 
-    if(!category_name || !item_name)
+    if(!category_name )
     {
         res.status(400)
         throw new Error("all filed all mandatory")
@@ -19,8 +19,9 @@ const createCategory = asyncHandler( async (req, res)=>{
 
     const category1 = await Category.create({
         category_name,
-        category_item :[{ item_name}]
+        category_item
 
+       
     })
     res.status(202).json(category1)
     

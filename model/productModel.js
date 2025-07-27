@@ -22,10 +22,14 @@ const productSchema = mongoose.Schema({
         type : String,
         required : [true, "Please add Category"]
     },
+    subcategory : {
+        type : String,
+        required : [true, "Please add SubCategory"]
+    },
 
     quantity:{
         required: [true, "Please add Product quantity"],
-        type : Number
+        type : String
     },
     mrp:{
         required: [true, "Please add Product MRP"],

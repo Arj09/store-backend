@@ -7,25 +7,26 @@ const User = require("../model/userModel")
 const createProduct = asyncHandler( async (req, res)=>{
    
 
-    const { name, price, category, quantity, mrp} = req.body
+    const { name, price, category, quantity, mrp, subcategory} = req.body
     console.log(req.body)
     //console.log(req.file.filename)
     
 
-    if(!name || !price || !quantity || !mrp || !category ){
+    if(!name || !price || !quantity || !mrp || !category || !subcategory ){
         res.status(400)
         throw new Error("all filed all mandatory")
     }
     
 
-   console.log("process")
+   console.log(req.body)
     const product = await Product.create({
         image : req.file.filename ,
         name ,
         price,
         quantity,
         category,
-        mrp
+        mrp,
+        subcategory
         
         
 
@@ -40,7 +41,6 @@ const getProducts = asyncHandler( async  (req, res)=>{
 
 
    
-    
     const product = await Product.find()
     const product1 = product.reverse()
     
@@ -65,21 +65,7 @@ const updateProduct = asyncHandler(async (req, res)=>{
     
     const product = await Product.findById(req.params.id);
     
-    console.log(req.admin.id)
-
-
-    
-/*
-    const admin = await Admin.findById(req.user.id);
-    console.log(admin)
-    
-    
-    if(!admin){
-        res.status(403);
-        throw new Error("User don't have permission to update this  product");
-    }
-
-    console.log(req.body.price)  */
+  
    
     if(!product){
         res.status(404);

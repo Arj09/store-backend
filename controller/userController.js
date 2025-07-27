@@ -103,11 +103,6 @@ const EditUserDetails = asyncHandler (async(req, res)=>{
     
     const user = await User.findOne({_id: req.user.id});
 
-    console.log("something print", req.body)
-
-  
-    
-    
     if(!user){
         res.status(403);
         throw new Error("User don't have permission to edit any detail");
