@@ -31,9 +31,10 @@ app.use("/api/cart", require("./router/cartRouter"))
 app.use("/api/order", require("./router/orderRouter"))
 app.use("/api/user", require('./router/userRouter'))
 app.use("/api/admin", require('./router/adminRouter'))
-app.use("/api/image-upload", upload.single('image') , require("./router/Image"))
+//app.use("/api/image-upload", upload.single('image') , require("./router/Image"))
 app.use("/api/category", require("./router/categoryRouter"))
 app.use("/api/type", require("./router/typeRouter"))
+app.use("/api/payment", require("./router/paymentRouter"))
 app.use(errorHandler);
 
 

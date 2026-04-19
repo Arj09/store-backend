@@ -7,11 +7,7 @@ const categorySChema = mongoose.Schema({
         type : String,
         required : [true, "Please add category"]
     },
-    category_item : [
-        {
-            item_name : { type :String, required : [true, "please add"]}
-        }
-    ]
+    
 
    
 

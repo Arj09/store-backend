@@ -40,11 +40,32 @@ const createProduct = asyncHandler( async (req, res)=>{
 const getProducts = asyncHandler( async  (req, res)=>{
 
 
-   
+    //const admin = await Admin.findById(req.user.id);
     const product = await Product.find()
-    const product1 = product.reverse()
     
-    res.status(200).json(product1)
+    
+
+    const product1 = product.filter((product => product.quantity >  0))
+    const product2 = product1.reverse()
+
+    
+    
+    res.status(200).json(product2)
+    
+})
+
+
+const unProducts = asyncHandler( async  (req, res)=>{
+
+
+    
+    const product = await Product.find()
+    const product1 = product.filter((product => product.quantity <=  0))
+    const product2 = product1.reverse()
+
+    
+    
+    res.status(200).json(product2)
     
 })
 
@@ -109,4 +130,6 @@ const deleteProduct = asyncHandler ( async  (req, res)=>{
 
 
 
-module.exports ={createProduct, getProduct, getProducts, updateProduct, deleteProduct}
+
+
+module.exports ={createProduct, getProduct, getProducts, updateProduct, deleteProduct, unProducts}

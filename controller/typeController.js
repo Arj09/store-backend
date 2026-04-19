@@ -1,22 +1,21 @@
 const asyncHandler = require("express-async-handler");
 const Type = require("../model/typeModel")
-
 const User = require("../model/userModel")
 
 
 const createType = asyncHandler( async (req, res)=>{
    
 
-    const { name, category} = req.body
+    const { name, category_id} = req.body
    
-    if(!name || !category  ){
+    if(!name || !category_id  ){
         res.status(400)
         throw new Error("all filed all mandatory")
     }
     
     const product = await Type.create({
         name,
-        category
+        category_id
     })
    
     res.status(202).json(product)

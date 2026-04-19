@@ -10,9 +10,9 @@ const typeSchema = mongoose.Schema({
     
    
 
-    category : {
+    category_id : {
         type : String,
-        required : [true, "Please add Category"]
+        required : [true, "Please add Category ID"]
     },
     
     
