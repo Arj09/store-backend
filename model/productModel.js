@@ -35,6 +35,14 @@ const productSchema = mongoose.Schema({
         required: [true, "Please add Product MRP"],
         type : Number
     },
+     
+    message:{
+        type : String
+    },
+
+    use :{
+        type : String
+    }
     
 
 
